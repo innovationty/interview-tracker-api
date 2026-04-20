@@ -26,12 +26,14 @@ def create_application(
     response_model=list[schemas.ApplicationResponse],
     status_code=status.HTTP_200_OK,
     summary="List all applications",
-    description="Return all application records.",
+    description="Return application records with optional pagination.",
 )
 def get_all_applications(
+    page: int = Query(1, ge=1, description="Page number, starting from 1"),
+    page_size: int = Query(20, ge=1, le=100, description="Number of records per page"),
     db: Session = Depends(get_db),
 ):
-    return crud.get_all_applications(db)
+    return crud.get_all_applications(db, page=page, page_size=page_size)
 
 
 @router.get(

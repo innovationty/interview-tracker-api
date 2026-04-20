@@ -73,6 +73,24 @@ def test_list_all_application_records():
     assert len(data) == 2
 
 
+def test_list_applications_with_pagination():
+    create_sample_application(company_name="Company 1")
+    create_sample_application(company_name="Company 2")
+    create_sample_application(company_name="Company 3")
+
+    # Request only two records on page 1.
+    response = client.get("/applications?page=1&page_size=2")
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data) == 2
+
+    # Request the next page and expect the remaining one record.
+    response_page_2 = client.get("/applications?page=2&page_size=2")
+    assert response_page_2.status_code == 200
+    data_page_2 = response_page_2.json()
+    assert len(data_page_2) == 1
+
+
 def test_get_single_application_record():
     created = create_sample_application(job_title="Junior Backend Developer")
     app_id = created["id"]

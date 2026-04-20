@@ -177,12 +177,20 @@ Content-Type: application/json
 - Purpose: Return all application records.
 - Method: GET
 - URL: /applications
-- Query parameters: None
+- Query parameters (optional):
+  - page (integer, default 1): page number
+  - page_size (integer, default 20, max 100): records per page
 - Request body: None
 - Example request:
 
 ```http
 GET /applications HTTP/1.1
+```
+
+- Pagination example request:
+
+```http
+GET /applications?page=1&page_size=5 HTTP/1.1
 ```
 
 - Example JSON response:

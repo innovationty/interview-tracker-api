@@ -15,9 +15,20 @@ def create_application(db: Session, application_data: schemas.ApplicationCreate)
     return db_application
 
 
-def get_all_applications(db: Session) -> list[models.Application]:
-    """Return all applications, newest first."""
-    return db.query(models.Application).order_by(models.Application.id.desc()).all()
+def get_all_applications(
+    db: Session,
+    page: int = 1,
+    page_size: int = 20,
+) -> list[models.Application]:
+    """Return applications with simple pagination, newest first."""
+    offset_value = (page - 1) * page_size
+    return (
+        db.query(models.Application)
+        .order_by(models.Application.id.desc())
+        .offset(offset_value)
+        .limit(page_size)
+        .all()
+    )
 
 
 def get_application_by_id(db: Session, application_id: int) -> models.Application | None:
