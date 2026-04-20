@@ -1,0 +1,50 @@
+company_name,job_title,application_date,status,interview_round,notes,result
+Google,Senior Backend Engineer,2026-01-15,offer,4,Completed system design round with technical director,Offer received
+Microsoft,Full Stack Developer,2026-01-22,interviewing,3,Passed behavioral and coding assessments,pending
+Amazon,Software Development Engineer,2026-01-28,interviewing,2,Completed two technical rounds,pending
+Meta,Backend Engineer,2026-02-05,rejected,2,Failed system design round,rejected
+Apple,iOS Developer,2026-02-10,offer,3,Final interview went well,Offer received
+Netflix,Data Engineer,2026-02-15,withdrawn,1,Accepted offer from competing company,withdrawn
+Tesla,Embedded Software Engineer,2026-02-20,interviewing,2,Awaiting results from coding challenge,pending
+IBM,Cloud Solutions Architect,2026-02-25,rejected,1,Overqualified for the role,rejected
+Oracle,Database Engineer,2026-03-01,offer,3,Strong performance across all rounds,Offer received
+Spotify,Frontend Engineer,2026-03-05,interviewing,2,Completed take-home assessment,pending
+LinkedIn,Product Manager,2026-03-10,applied,0,Submitted application through job portal,pending
+GitHub,DevOps Engineer,2026-03-12,interviewing,1,Phone screening completed,pending
+Stripe,Senior Software Engineer,2026-03-15,offer,3,Impressed with system design approach,Offer received
+Airbnb,Data Scientist,2026-03-18,interviewing,2,Passed technical screening,pending
+Square,Backend Engineer,2026-03-22,rejected,2,Role requirements changed,rejected
+Shopify,Full Stack Developer,2026-03-25,withdrawn,0,Company restructuring,withdrawn
+Dropbox,Security Engineer,2026-03-28,applied,0,Early application stage,pending
+Box,Cloud Architect,2026-04-01,interviewing,1,Initial screening scheduled,pending
+Slack,Backend Engineer,2026-04-03,offered,2,Waiting for formal offer letter,pending
+Uber,Software Engineer,2026-04-05,rejected,1,Did not align with team needs,rejected
+Lyft,Mobile Engineer,2026-04-08,interviewing,2,Code review in progress,pending
+Airbnb,Full Stack Developer,2026-04-10,withdrawn,1,Personal circumstances changed,withdrawn
+Twilio,Product Engineer,2026-04-12,applied,0,Recent graduate targeting,pending
+Figma,Design Systems Engineer,2026-04-15,interviewing,3,Demonstrated strong UI component knowledge,pending
+Canva,Full Stack Engineer,2026-04-17,offer,3,Excellent fit for the team,Offer received
+Notion,Backend Engineer,2026-04-19,interviewing,2,Technical assessment results pending,pending
+Discord,Senior Engineer,2026-04-21,applied,0,Referral from current employee,pending
+Atlassian,Platform Engineer,2026-04-23,rejected,2,Experience gap in specific technologies,rejected
+GitLab,DevOps Engineer,2026-04-25,interviewing,1,Phone interview scheduled,pending
+HashiCorp,Software Engineer,2026-04-27,offer,3,Great cultural fit,Offer received
+JetBrains,IDE Developer,2026-05-01,interviewing,2,Coding challenge submitted,pending
+Unity Technologies,Graphics Engineer,2026-05-03,withdrawn,0,Changed career direction,withdrawn
+Unreal Engine,Gameplay Programmer,2026-05-05,applied,0,Game development enthusiast,pending
+Roblox,Software Engineer,2026-05-07,interviewing,1,Technical screening next week,pending
+Epic Games,Rendering Engineer,2026-05-09,rejected,1,Specific engine expertise required,rejected
+Nvidia,CUDA Specialist,2026-05-11,interviewing,2,GPU programming assessment,pending
+AMD,Software Engineer,2026-05-13,offer,2,Strong embedded systems knowledge,Offer received
+Intel,Systems Engineer,2026-05-15,applied,0,Hardware-software interaction focus,pending
+Qualcomm,Mobile SOC Developer,2026-05-17,interviewing,1,Phone screen passed,pending
+Broadcom,Firmware Engineer,2026-05-19,rejected,2,Limited firmware background,rejected
+Synopsys,CAD Software Engineer,2026-05-21,interviewing,2,EDA tools experience valued,pending
+Cadence Design,Design Engineer,2026-05-23,offer,3,Excellent CAD background,Offer received
+TSMC,Process Engineer,2026-05-25,withdrawn,1,Visa sponsorship concerns,withdrawn
+Samsung,Mobile Developer,2026-05-27,applied,0,Android development focus,pending
+Sony,Game Developer,2026-05-29,interviewing,1,Gaming platform experience,pending
+Panasonic,IoT Engineer,2026-05-31,rejected,1,Market-driven position change,rejected
+LG Electronics,Display Engineer,2026-06-02,interviewing,2,Display technology assessment,pending
+Lenovo,Hardware Engineer,2026-06-04,offer,2,Strong performance,Offer received
+Dell EMC,Infrastructure Engineer,2026-06-06,applied,0,Enterprise systems focus,pending

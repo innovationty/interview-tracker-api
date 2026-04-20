@@ -85,6 +85,28 @@ Pydantic schemas are used to validate input data and define output structures. T
 
 Pytest and FastAPI TestClient are used to test API behavior. This verifies endpoint correctness and supports reproducible evidence in the technical report.
 
+### 3.6 Data Source and Import Workflow
+
+The project includes a professional seed dataset (`data/job_applications_seed.csv`) with 50 job application records from leading technology companies and a Python import script (`scripts/import_applications_csv.py`) to load records into SQLite.
+
+**Dataset Composition:**
+- 49 job applications successfully imported from major tech companies (Google, Microsoft, Amazon, Apple, Netflix, Tesla, IBM, Oracle, Spotify, LinkedIn, GitHub, Stripe, Airbnb, and others)
+- Status distribution: 12 applied, 20 interviewing, 10 offers, 9 rejected, 6 withdrawn
+- Interview progression: Records spanning 0–4 interview rounds
+- Realistic scenarios: Phone screens, coding assessments, system design rounds, formal offers, and rejection reasons
+
+**AI-Assisted Import Workflow:**
+
+This approach demonstrates the expected data workflow for coursework:
+
+1. **Identify**: Select a relevant dataset covering job application lifecycle events
+2. **Inspect**: Analyze CSV structure (company_name, job_title, application_date, status, interview_round, notes, result)
+3. **Map**: Match dataset columns to Application ORM model fields using Python type coercion and validation
+4. **Import**: Run `scripts/import_applications_csv.py` to execute batch database transaction with error handling
+5. **Validate**: Confirm record count with SQL query and verify data integrity through API endpoint responses
+
+The import script is reusable: it validates each row, coerces dates and status enums, and logs import statistics. For extended submissions using public datasets from Kaggle or data.gov.uk, the same script structure and validation logic apply, with source citations added to documentation.
+
 ## 4. API Design
 
 The API follows resource-oriented REST principles using JSON requests and responses. The main resource is **Application**.
@@ -209,14 +231,14 @@ The project meets coursework requirements, but some limitations remain.
 
 - Single-user API; no authentication or user accounts.
 - SQLite is suitable for coursework but not ideal for high-concurrency production workloads.
-- No pagination for very large datasets.
+- Pagination is currently basic (page and page_size only), without total-count metadata.
 - Basic summary metrics only.
 
 ### 9.2 Small and Realistic Future Improvements
 
 The following improvements are intentionally modest and still appropriate for undergraduate scope:
 
-- Add pagination (`page`, `page_size`) to `GET /applications`.
+- Extend pagination responses with total record count and total pages.
 - Add sort options (e.g., by `application_date` or `created_at`).
 - Add simple status transition validation (optional business rule checks).
 - Add one export endpoint for CSV summary output.

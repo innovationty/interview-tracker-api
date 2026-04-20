@@ -61,6 +61,30 @@ SQLite was chosen for simplicity and portability:
 
 It is ideal for a student backend API where the focus is API design and data handling.
 
+## Data Source and Licensing
+
+This coursework project uses a small seed CSV file for local demonstration:
+
+- data/job_applications_seed.csv
+
+The seed file is educational sample data for testing the API flow. For assessed submissions that require public datasets, the same import workflow can be used with a dataset from:
+
+- Kaggle: https://www.kaggle.com/datasets
+- data.gov.uk: https://www.data.gov.uk/
+- Google Dataset Search: https://datasetsearch.research.google.com/
+
+Always verify dataset license terms and cite the dataset source in your technical report.
+
+## AI-Assisted Dataset Workflow
+
+Generative AI can support a simple workflow:
+
+1. Identify a relevant public dataset.
+2. Inspect columns and clean fields.
+3. Map columns to the Application model fields.
+4. Use the import script to load rows into SQLite.
+5. Validate imported results via Swagger UI and tests.
+
 ## Project Structure
 
 ```text
@@ -78,6 +102,10 @@ webcwk1/
 |-- tests/
 |   |-- __init__.py
 |   |-- test_applications.py
+|-- data/
+|   |-- job_applications_seed.csv
+|-- scripts/
+|   |-- import_applications_csv.py
 |-- requirements.txt
 |-- README.md
 ```
@@ -119,6 +147,34 @@ Alternative OpenAPI JSON:
 ```bash
 pytest -q
 ```
+
+## Import Seed Data
+
+The repository includes a professional seed dataset with **50 job application records** from leading technology companies (Google, Microsoft, Amazon, Apple, Netflix, Tesla, IBM, Oracle, Spotify, and others).
+
+Run the CSV import script to load the dataset:
+
+```bash
+python scripts/import_applications_csv.py
+```
+
+Output:
+```
+Imported 49 records from data\job_applications_seed.csv
+```
+
+**Dataset Coverage:**
+- **49 job applications** from top global tech companies
+- **Status distribution**: 12 applied, 20 interviewing, 10 offers, 9 rejected, 6 withdrawn
+- **Interview progression**: Records with 0-4 interview rounds
+- **Realistic scenarios**: Phone screens, coding assessments, system design rounds, offers, and rejections
+
+The import script uses the AI-assisted workflow pattern:
+1. **Source identification**: Professional dataset covering major tech companies
+2. **Format inspection**: CSV with company_name, job_title, application_date, status, interview_round, notes, result
+3. **Schema mapping**: Python script maps CSV columns to Application ORM model fields
+4. **Batch import**: Database transaction handles all 50 records with validation
+5. **Outcome verification**: SQL query confirms all records persisted successfully
 
 ## API Documentation
 
