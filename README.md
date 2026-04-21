@@ -148,6 +148,10 @@ Alternative OpenAPI JSON:
 pytest -q
 ```
 
+## Deployment
+
+The current PythonAnywhere deployment flow is documented in [PYTHONANYWHERE_DEPLOYMENT.md](PYTHONANYWHERE_DEPLOYMENT.md). It uses the experimental `pa website create` ASGI command that matches the live deployment setup.
+
 ## Import Seed Data
 
 The repository includes a professional seed dataset with **50 job application records** from leading technology companies (Google, Microsoft, Amazon, Apple, Netflix, Tesla, IBM, Oracle, Spotify, and others).
@@ -178,301 +182,24 @@ The import script uses the AI-assisted workflow pattern:
 
 ## API Documentation
 
-Base URL: `http://127.0.0.1:8000`
+Primary API documentation is available in two formats:
 
-### 1) Create Application
+- Live Swagger UI: `http://127.0.0.1:8000/docs`
+- OpenAPI JSON: `http://127.0.0.1:8000/openapi.json`
 
-- Purpose: Create a new job application record.
-- Method: POST
-- URL: /applications
-- Query parameters: None
-- Request body:
+For coursework submission, export the API docs to PDF and place the file in this repository.
+Recommended filename:
 
-```json
-{
-  "company_name": "TechNova",
-  "job_title": "Junior Backend Developer",
-  "application_date": "2026-04-10",
-  "status": "applied",
-  "interview_round": 1,
-  "notes": "Revise SQL joins and API testing",
-  "result": "pending"
-}
-```
+- `API_DOCUMENTATION.pdf`
 
-- Example request:
+Then add its repository link in your technical report submission section.
 
-```http
-POST /applications HTTP/1.1
-Content-Type: application/json
-```
+## Submission Checklist (Coursework 1)
 
-- Example JSON response:
-
-```json
-{
-  "id": 1,
-  "company_name": "TechNova",
-  "job_title": "Junior Backend Developer",
-  "application_date": "2026-04-10",
-  "status": "applied",
-  "interview_round": 1,
-  "notes": "Revise SQL joins and API testing",
-  "result": "pending",
-  "created_at": "2026-04-14T10:00:00",
-  "updated_at": "2026-04-14T10:00:00"
-}
-```
-
-- Status codes: 201 Created, 422 Unprocessable Entity
-- Error responses:
-  - 422 for invalid request fields (for example missing company_name)
-
-### 2) List All Applications
-
-- Purpose: Return all application records.
-- Method: GET
-- URL: /applications
-- Query parameters (optional):
-  - page (integer, default 1): page number
-  - page_size (integer, default 20, max 100): records per page
-- Request body: None
-- Example request:
-
-```http
-GET /applications HTTP/1.1
-```
-
-- Pagination example request:
-
-```http
-GET /applications?page=1&page_size=5 HTTP/1.1
-```
-
-- Example JSON response:
-
-```json
-[
-  {
-    "id": 2,
-    "company_name": "CloudEdge",
-    "job_title": "Backend Engineer",
-    "application_date": "2026-04-11",
-    "status": "interviewing",
-    "interview_round": 2,
-    "notes": "Practice system design",
-    "result": "pending",
-    "created_at": "2026-04-14T10:10:00",
-    "updated_at": "2026-04-14T10:10:00"
-  }
-]
-```
-
-- Status codes: 200 OK
-- Error responses: none in normal operation
-
-### 3) Get Application by ID
-
-- Purpose: Return one application by its ID.
-- Method: GET
-- URL: /applications/{application_id}
-- Query parameters: None
-- Request body: None
-- Example request:
-
-```http
-GET /applications/1 HTTP/1.1
-```
-
-- Example JSON response:
-
-```json
-{
-  "id": 1,
-  "company_name": "TechNova",
-  "job_title": "Junior Backend Developer",
-  "application_date": "2026-04-10",
-  "status": "applied",
-  "interview_round": 1,
-  "notes": "Revise SQL joins and API testing",
-  "result": "pending",
-  "created_at": "2026-04-14T10:00:00",
-  "updated_at": "2026-04-14T10:00:00"
-}
-```
-
-- Status codes: 200 OK, 404 Not Found
-- Error responses:
-  - 404 if the application ID does not exist
-
-### 4) Update Application
-
-- Purpose: Update one or more fields of an existing application.
-- Method: PUT
-- URL: /applications/{application_id}
-- Query parameters: None
-- Request body:
-
-```json
-{
-  "status": "offer",
-  "interview_round": 3,
-  "result": "Offer received"
-}
-```
-
-- Example request:
-
-```http
-PUT /applications/1 HTTP/1.1
-Content-Type: application/json
-```
-
-- Example JSON response:
-
-```json
-{
-  "id": 1,
-  "company_name": "TechNova",
-  "job_title": "Junior Backend Developer",
-  "application_date": "2026-04-10",
-  "status": "offer",
-  "interview_round": 3,
-  "notes": "Revise SQL joins and API testing",
-  "result": "Offer received",
-  "created_at": "2026-04-14T10:00:00",
-  "updated_at": "2026-04-14T10:20:00"
-}
-```
-
-- Status codes: 200 OK, 404 Not Found, 422 Unprocessable Entity
-- Error responses:
-  - 404 if the application ID does not exist
-  - 422 for invalid field values
-
-### 5) Delete Application
-
-- Purpose: Delete an application by ID.
-- Method: DELETE
-- URL: /applications/{application_id}
-- Query parameters: None
-- Request body: None
-- Example request:
-
-```http
-DELETE /applications/1 HTTP/1.1
-```
-
-- Example JSON response: No response body
-- Status codes: 204 No Content, 404 Not Found
-- Error responses:
-  - 404 if the application ID does not exist
-
-### 6) Filter Applications by Status
-
-- Purpose: Return applications that match a given status.
-- Method: GET
-- URL: /applications/filter
-- Query parameters:
-  - status (required): applied | interviewing | offer | rejected | withdrawn
-- Request body: None
-- Example request:
-
-```http
-GET /applications/filter?status=interviewing HTTP/1.1
-```
-
-- Example JSON response:
-
-```json
-[
-  {
-    "id": 2,
-    "company_name": "CloudEdge",
-    "job_title": "Backend Engineer",
-    "application_date": "2026-04-11",
-    "status": "interviewing",
-    "interview_round": 2,
-    "notes": "Practice system design",
-    "result": "pending",
-    "created_at": "2026-04-14T10:10:00",
-    "updated_at": "2026-04-14T10:10:00"
-  }
-]
-```
-
-- Status codes: 200 OK, 422 Unprocessable Entity
-- Error responses:
-  - 422 if status value is invalid
-
-### 7) Search Applications
-
-- Purpose: Search by company name or job title.
-- Method: GET
-- URL: /applications/search
-- Query parameters:
-  - keyword (required): search text
-- Request body: None
-- Example request:
-
-```http
-GET /applications/search?keyword=backend HTTP/1.1
-```
-
-- Example JSON response:
-
-```json
-[
-  {
-    "id": 2,
-    "company_name": "CloudEdge",
-    "job_title": "Backend Engineer",
-    "application_date": "2026-04-11",
-    "status": "interviewing",
-    "interview_round": 2,
-    "notes": "Practice system design",
-    "result": "pending",
-    "created_at": "2026-04-14T10:10:00",
-    "updated_at": "2026-04-14T10:10:00"
-  }
-]
-```
-
-- Status codes: 200 OK, 400 Bad Request, 422 Unprocessable Entity
-- Error responses:
-  - 400 if keyword is empty after trimming spaces
-  - 422 if query format is invalid
-
-### 8) Get Summary
-
-- Purpose: Return summary metrics for reporting and dashboard use.
-- Method: GET
-- URL: /applications/summary
-- Query parameters: None
-- Request body: None
-- Example request:
-
-```http
-GET /applications/summary HTTP/1.1
-```
-
-- Example JSON response:
-
-```json
-{
-  "total_applications": 3,
-  "status_breakdown": {
-    "applied": 1,
-    "interviewing": 1,
-    "offer": 1
-  },
-  "result_breakdown": {
-    "pending": 2,
-    "Offer received": 1
-  },
-  "average_interview_round": 2.0
-}
-```
-
-- Status codes: 200 OK
-- Error responses: none in normal operation
+- Public GitHub repository with visible commit history
+- Runnable source code matching the presented version
+- README with setup, run, and docs links
+- API documentation file (PDF) referenced from README/report
+- Technical report with GenAI declaration
+- Presentation slides for oral exam
+- Optional deployment URL and demonstration evidence

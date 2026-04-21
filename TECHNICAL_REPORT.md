@@ -263,6 +263,21 @@ The use of FastAPI, SQLite, SQLAlchemy, and Pydantic creates a strong balance be
 
 This project was developed with support from generative AI tools for drafting code structure, documentation drafts, and testing templates. All generated content was reviewed, edited, and validated by the student.
 
+### 11.1 Tools and Purposes
+
+- Secure Microsoft Copilot / GitHub Copilot Chat: planning API structure, debugging deployment issues, improving technical writing quality.
+- AI-assisted prompting workflow: exploring alternative deployment options and comparing WSGI vs ASGI hosting paths.
+
+### 11.2 Human Oversight and Validation
+
+- All final code changes were manually reviewed before commit.
+- Endpoint behavior was validated through pytest and Swagger UI.
+- Deployment instructions were validated against the working PythonAnywhere ASGI command flow.
+
+### 11.3 Conversation Log Evidence
+
+Exported GenAI conversation logs should be attached as supplementary material in the submission appendix, with short labels describing what each log demonstrates (for example: debugging, architecture exploration, and documentation refinement).
+
 The student takes full responsibility for:
 
 - final design decisions,
@@ -272,3 +287,14 @@ The student takes full responsibility for:
 - compliance with coursework requirements and academic integrity policies.
 
 AI assistance was used as a productivity and learning aid, not as a replacement for understanding or independent verification.
+
+## 12. Submission Mapping
+
+This section maps assessment deliverables to repository artifacts.
+
+- Code repository: public GitHub repository with commit history and runnable source.
+- README and setup guide: `README.md`.
+- API documentation: Swagger UI (`/docs`) and repository PDF export (`API_DOCUMENTATION.pdf`, to be included before final submission).
+- Technical report: this file (`TECHNICAL_REPORT.md`) exported to PDF for Minerva.
+- Deployment guide: `PYTHONANYWHERE_DEPLOYMENT.md`.
+- Presentation slides: linked in the final PDF report appendix.
